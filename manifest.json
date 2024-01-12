@@ -1,17 +1,36 @@
 {
-    "manifest_version": 2,
-    "name": "Currency Converter",
-    "version": "1.0",
-    "description": "Convert currencies with ease!",
-    "browser_action": {
-      "default_popup": "popup.html",
-      "default_title": "Currency Converter",
-      "default_icon": {
-        "16": "image/icon-16.png",
-        "48": "image/icon-48.png",
-        "128": "image/icon-128.png"
-      }
+  "manifest_version": 2,
+  "name": "Currency Converter",
+  "version": "1.0",
+  "description": "Convert currencies with ease!",
+  "browser_action": {
+    "default_icon": {
+      "16": "image/icon-16.png",
+      "48": "image/icon-48.png",
+      "128": "image/icon-128.png"
     },
-    "permissions": ["tabs","https://paytm.com/"]
+    "default_title": "Currency Converter",
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "activeTab",
+    "storage",
+    "contextMenus",
+    "activeTab",
+    "tabs"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content.js"
+      ]
+    }
+  ],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": true
   }
-  
+}
